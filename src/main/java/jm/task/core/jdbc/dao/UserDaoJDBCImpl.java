@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl  implements UserDao {
-    private static final String INSERT_NEW_USER = "insert into myfirstconnect.users (id, name, lastname, age) values(?,?,?,?)";
+    private static final String INSERT_NEW_USER = "insert into myfirstconnect.users (name, lastname, age) values(?,?,?)";
 
     private static final String SELECT_ALL_USERS = "select id, name, lastname, age from myfirstconnect.users";
 
@@ -58,13 +58,13 @@ public class UserDaoJDBCImpl  implements UserDao {
 
              PreparedStatement ps = connection.prepareStatement(INSERT_NEW_USER)) {
 
-            ps.setLong(1, getAllUsers().size() + 1);
+//            ps.setLong(1, getAllUsers().size() + 1);
 
-            ps.setString(2, name);
+            ps.setString(1, name);
 
-            ps.setString(3, lastName);
+            ps.setString(2, lastName);
 
-            ps.setByte(4, age);
+            ps.setByte(3, age);
 
            ps.executeUpdate();
 
